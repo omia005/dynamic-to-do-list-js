@@ -5,6 +5,17 @@
    const taskInput = document.getElementById('task-input');
    const taskList = document.getElementById('task-list');
 
+   // Initialize tasks array from Local Storage
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+  // Load tasks from Local Storage when page loads
+    function loadTasks() {
+        taskList.innerHTML = ''; // Clear existing tasks
+        tasks.forEach((task, index) => {
+            createTaskElement(task, index);
+        });
+    }
+
    //creating the addTask function
    function addTask(){
      
