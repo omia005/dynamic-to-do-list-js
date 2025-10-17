@@ -27,7 +27,8 @@
          //create a remove button
          const removebtn = document.createElement('button');
          removebtn.textContent = "Remove";
-         removebtn.className = "remove-btn"
+         removebtn.className = "remove-btn";
+         removeButton.classList.add('remove-btn');
 
         //adding an onclick event to the remove button
         removebtn.onclick = function(){
