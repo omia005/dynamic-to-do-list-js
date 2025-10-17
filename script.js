@@ -43,25 +43,36 @@
 
         //adding an onclick event to the remove button
         removebtn.onclick = function(){
-        taskList.removeChild(listItem);
+          // Remove from tasks array
+          tasks.splice(index, 1);
+          // Update Local Storage
+          saveTasks();
+          taskList.removeChild(listItem);
         }
        
         // Append remove button to li, then li to taskList
         listItem.appendChild(removeButton);
         taskList.appendChild(listItem);
 
+       // Save tasks to Local Storage
+       function saveTasks() {
+         localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
         // Clear the task input field
         taskInput.value = '';
 
        // Attach Event Listeners
        addButton.addEventListener('click', addTask);
 
+       // Load tasks when page loads
+       loadTasks();
+      
       //adding event listener to the enter key
        taskInput.addEventListener('keypress', function(event){
           if (event.key === 'Enter') {
             addTask();
         }
-       })
+       });
      }
    }
- })
+ });
